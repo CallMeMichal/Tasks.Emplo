@@ -1,0 +1,8 @@
+ Zak³adaj¹c, ¿e parametry metody z zadania 3 pobieramy bezpoœrednio z bazy danych. Czy
+znasz jakieœ sposoby na optymalizacjê liczby zapytañ SQL w tego typu przypadkach? Wymieñ
+i opisz krótko ka¿dy z nich.
+
+
+1. **Batching (Grupowanie zapytañ)**: Zamiast wykonywaæ wiele pojedynczych zapytañ do bazy danych, mo¿na zgrupowaæ je w jedno zapytanie. Na przyk³ad, jeœli potrzebujemy pobraæ dane dla wielu u¿ytkowników, zamiast wykonywaæ osobne zapytanie dla ka¿dego u¿ytkownika, mo¿emy u¿yæ jednego zapytania z klauzul¹ `IN`, aby pobraæ dane dla wszystkich u¿ytkowników jednoczeœnie.
+2. **Lazy Loading (£adowanie leniwe)**: Zamiast pobieraæ wszystkie dane od razu, mo¿na pobieraæ je w miarê potrzeb. Na przyk³ad, jeœli mamy du¿¹ tabelê z danymi, mo¿emy najpierw pobraæ tylko te dane, które s¹ aktualnie potrzebne, a resztê ³adowaæ póŸniej, gdy bêdzie to konieczne.
+3. **Eager Loading (£adowanie chciwe)**: W przeciwieñstwie do lazy loading, eager loading polega na pobieraniu wszystkich potrzebnych danych w jednym zapytaniu. Jest to przydatne, gdy wiemy, ¿e bêdziemy potrzebowaæ wielu powi¹zanych danych, poniewa¿ pozwala to unikn¹æ wielu dodatkowych zapytañ do bazy danych.
