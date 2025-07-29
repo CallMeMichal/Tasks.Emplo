@@ -34,6 +34,8 @@
 🏗️ Project Structure
 ```
 📁 Solution 'Tasks.Emplo' (3 projects)
+├── 📁 Solution Items
+│   └── Task6.txt                # Task 6 - task requirements
 ├── 📁 Task1.Emplo/              # Task 1 - Employee hierarchy structure
 ├── 📁 Task2.Emplo/              # Task 2 - Vacation management system (main)
 │   ├── Controllers/             # API endpoints
