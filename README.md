@@ -32,7 +32,7 @@
 
 ---
 ```
-## 🏗️ Project Structure
+🏗️ Project Structure
 📁 Solution 'Tasks.Emplo' (3 projects)
 ├── 📁 Task1.Emplo/              # Task 1 - Employee hierarchy structure
 ├── 📁 Task2.Emplo/              # Task 2 - Vacation management system (main)
