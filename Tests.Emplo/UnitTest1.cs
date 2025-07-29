@@ -27,7 +27,7 @@ namespace Tests.Emplo
                 Id = 1,
                 Name = "Jan Kowalski",
                 TeamId = 1,
-                VacationPackageId = 3 // Senior 2024 - 30 dni
+                VacationPackageId = 3
             };
 
             var vacations = new List<Vacation>
@@ -37,7 +37,7 @@ namespace Tests.Emplo
                     Id = 1,
                     DateSince = new DateTime(2024, 7, 1),
                     DateUntil = new DateTime(2024, 7, 14),
-                    NumberOfHours = 112, // 14 dni (112h / 8h)
+                    NumberOfHours = 112,
                     IsPartialVacation = false,
                     EmployeeId = 1
                 }
@@ -47,7 +47,7 @@ namespace Tests.Emplo
             {
                 Id = 3,
                 Name = "Senior 2024",
-                GrantedDays = 30, // 30 dni urlopu
+                GrantedDays = 30,
                 Year = 2024
             };
 
@@ -59,7 +59,7 @@ namespace Tests.Emplo
             var result = _task2ServiceMock.Object.IfEmployeeCanRequestVacation(employee, vacations, vacationPackage);
 
             // Assert
-            Assert.True(result); // Ma jeszcze 16 dni urlopu (30 - 14 = 16)
+            Assert.True(result);
         }
 
         /// <summary>
