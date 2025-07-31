@@ -39,15 +39,15 @@
 ├── 📁 Task1.Emplo/              # Task 1 - Employee hierarchy structure
 ├── 📁 Task2.Emplo/              # Task 2 - Vacation management system (main)
 │   ├── Controllers/             # API endpoints
-│   ├── Services/               # Business logic layer
-│   ├── Repositories/           # Data access layer
+│   ├── Services/                # Business logic layer
+│   ├── Repositories/            # Data access layer
 │   ├── Models/
-│   │   ├── Database/           # Entity Framework models
-│   │   └── DTO/                # Data Transfer Objects
-│   ├── Interfaces/             # Service contracts
-│   └── Program.cs              # Application entry point
+│   │   ├── Database/            # Entity Framework models
+│   │   └── DTO/                 # Data Transfer Objects
+│   ├── Interfaces/              # Service contracts
+│   └── Program.cs               # Application entry point
 └── 📁 Tests.Emplo/             # Unit tests project
-└── UnitTest1.cs            # Test cases
+└── UnitTest1.cs                 # Test cases
 ```
 ---
 
