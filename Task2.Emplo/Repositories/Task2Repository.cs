@@ -52,23 +52,10 @@ namespace Task2.Emplo.Repositories
                 .Where(v => v.DateSince.Year <= currentYear && v.DateUntil.Year >= currentYear && v.DateUntil < today) // bierze urlopy ktore sa zakonczone,
                 .ToListAsync();
 
-            
-
-            /*foreach (var employee in employess)
-            {
-
-                var employeeVacations = vacationsCurrentYear
-                    .Where(v => v.EmployeeId == employee.Id)
-                    .ToList();
-
-                int totalUsedDays = 0;
-                foreach (var vacation in employeeVacations)
-                {
-                    var days = (vacation.DateUntil - vacation.DateSince).Days + 1;
-                    totalUsedDays += days;
-                }
-            }*/
-            return employess;
+            var employeesWithVacations = employess
+                .Where(emp => vacationsCurrentYear.Any(v => v.EmployeeId == emp.Id))
+                .ToList();
+            return employeesWithVacations;
         }
     }
 }
