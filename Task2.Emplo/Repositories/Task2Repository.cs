@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using Task2.Emplo.Models;
 using Task2.Emplo.Models.Database;
 
@@ -15,11 +16,21 @@ namespace Task2.Emplo.Repositories
 
         public async Task<List<Employee>> GetNetEmployeesWithVacationIn2019Async()
         {
+            // wszystkie ktore zaczynaja sie nawet w 2019
+
             return await _context.Employees
                 .Where(e => e.Team.Name == ".NET" &&
-                           e.Vacations.Any(v => v.DateSince.Year == 2019))
+                           e.Vacations.Any(v => v.DateSince.Year <= 2020 && v.DateUntil.Year >= 2018 )
+                           )
                 .ToListAsync();
         }
+
+
+/*        return await _context.Employees
+                .Where(e => e.Team.Name == ".NET" &&
+                           e.Vacations.Any(v => v.DateSince.Year == 2019 && )
+                           )
+                .ToListAsync();*/
 
         public async Task<List<Team>> GetTeamsWithoutVacationsIn2019Async()
         {
@@ -29,15 +40,35 @@ namespace Task2.Emplo.Repositories
                 .ToListAsync();
         }
 
+        // pracownik + liczba dni wykorzystanych w tym roku
+
         public async Task<List<Employee>> GetEmployeesWithUsedVacationsCurrentYearAsync()
         {
             var currentYear = DateTime.Now.Year;
             var today = DateTime.Now.Date;
 
-            return await _context.Employees
-                .Where(e => e.Vacations.Any(v =>
-                    v.DateSince.Year == currentYear && v.DateUntil < today))
+            var employess = await _context.Employees.ToListAsync(); // uzytkownicy
+            var vacationsCurrentYear = await _context.Vacations
+                .Where(v => v.DateSince.Year <= currentYear && v.DateUntil.Year >= currentYear && v.DateUntil < today) // bierze urlopy ktore sa zakonczone,
                 .ToListAsync();
+
+            
+
+            /*foreach (var employee in employess)
+            {
+
+                var employeeVacations = vacationsCurrentYear
+                    .Where(v => v.EmployeeId == employee.Id)
+                    .ToList();
+
+                int totalUsedDays = 0;
+                foreach (var vacation in employeeVacations)
+                {
+                    var days = (vacation.DateUntil - vacation.DateSince).Days + 1;
+                    totalUsedDays += days;
+                }
+            }*/
+            return employess;
         }
     }
 }
