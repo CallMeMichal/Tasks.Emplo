@@ -56,6 +56,7 @@ namespace Task2.Emplo.Repositories
                 .Where(emp => vacationsCurrentYear.Any(v => v.EmployeeId == emp.Id))
                 .ToList();
             return employeesWithVacations;
+
         }
     }
 }
